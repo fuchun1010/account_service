@@ -1,0 +1,17 @@
+server:
+  port: 10999
+  servlet:
+    context-path: /account_service
+
+spring:
+  name: account_service_01
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          servlet:
+            mvc:
+              method:
+                annotation: TRACE
