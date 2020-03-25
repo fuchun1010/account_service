@@ -1,5 +1,6 @@
 package com.tank.protocol;
 
+import com.tank.model.TemporarySubMoneyDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,13 @@ public class PreSubMoney {
   @Transient
   public boolean isEmptyMoney() {
     return Objects.isNull(money);
+  }
+
+
+  @Transient
+  public TemporarySubMoneyDTO toTemporarySubMoneyDTO() {
+    TemporarySubMoneyDTO dto = TemporarySubMoneyDTO.builder().build();
+    return dto.setMoney(this.money).setXid(this.xid);
   }
 
 }
