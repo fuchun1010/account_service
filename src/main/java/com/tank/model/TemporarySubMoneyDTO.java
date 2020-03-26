@@ -11,7 +11,11 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class TemporarySubMoneyDTO {
 
+  private Integer id;
+
   private String xid;
 
   private Integer money;
+
+  private String appName;
 }

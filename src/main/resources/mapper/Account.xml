@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tank.dao.AccountDAO">
+
+    <insert id="addTempSubMoneyRecord" parameterType="com.tank.model.TemporarySubMoneyDTO">
+        insert into tab_account_tmp(id, xid, app, tmpMoney)
+        values (#{id}, #{xid}, #{appName}, #{money})
+
+    </insert>
+
+    <update id="subMoney" parameterType="int">
+        update tab_account
+        set money = money - #{money}
+        where name = 'lisi'
+    </update>
+
+    <delete id="deleteTempRecord" parameterType="string">
+        delete
+        from tab_account_tmp
+        where xid = #{xid}
+    </delete>
+
+
+</mapper>

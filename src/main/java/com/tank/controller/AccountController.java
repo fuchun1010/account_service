@@ -1,15 +1,17 @@
 package com.tank.controller;
 
+import com.tank.model.TemporarySubMoneyDTO;
 import com.tank.protocol.ApiResult;
 import com.tank.protocol.ConfirmSubMoney;
 import com.tank.protocol.PreSubMoney;
 import com.tank.protocol.RollBackMoney;
+import com.tank.service.AccountService;
 import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 @RequestMapping("/v1")
@@ -37,4 +39,22 @@ public class AccountController {
     return ResponseEntity.ok(apiResult);
   }
 
+  @GetMapping("/test")
+  public ResponseEntity<ApiResult<String>> test() {
+    ApiResult<String> apiResult = ApiResult.<String>builder().build();
+    apiResult.setData("test");
+    TemporarySubMoneyDTO dto = TemporarySubMoneyDTO.builder().build();
+    dto.setXid("s0001");
+    dto.setMoney(100);
+    dto.setAppName("app");
+    dto.setId(pk.incrementAndGet());
+    this.accountService.addTempSubMoneyRecord(dto);
+    return ResponseEntity.ok(apiResult);
+  }
+
+
+  @Autowired
+  private AccountService accountService;
+
+  private AtomicInteger pk = new AtomicInteger(0);
 }
