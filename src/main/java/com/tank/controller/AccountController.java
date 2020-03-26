@@ -1,6 +1,5 @@
 package com.tank.controller;
 
-import com.tank.model.TemporarySubMoneyDTO;
 import com.tank.protocol.ApiResult;
 import com.tank.protocol.ConfirmSubMoney;
 import com.tank.protocol.PreSubMoney;
@@ -43,12 +42,13 @@ public class AccountController {
   public ResponseEntity<ApiResult<String>> test() {
     ApiResult<String> apiResult = ApiResult.<String>builder().build();
     apiResult.setData("test");
-    TemporarySubMoneyDTO dto = TemporarySubMoneyDTO.builder().build();
-    dto.setXid("s0001");
-    dto.setMoney(100);
-    dto.setAppName("app");
-    dto.setId(pk.incrementAndGet());
-    this.accountService.addTempSubMoneyRecord(dto);
+//    TemporarySubMoneyDTO dto = TemporarySubMoneyDTO.builder().build();
+//    dto.setXid("s0001");
+//    dto.setMoney(100);
+//    dto.setApp("app");
+//    dto.setId(pk.incrementAndGet());
+//    this.accountService.addTempSubMoneyRecord(dto);
+    this.accountService.subMoney("s0001");
     return ResponseEntity.ok(apiResult);
   }
 

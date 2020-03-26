@@ -25,7 +25,7 @@ public class PreSubMoney {
 
   @Transient
   public TemporarySubMoneyDTO toTemporarySubMoneyDTO() {
-    TemporarySubMoneyDTO dto = TemporarySubMoneyDTO.builder().build();
+    TemporarySubMoneyDTO dto = new TemporarySubMoneyDTO();
     return dto.setMoney(this.money).setXid(this.xid);
   }
 

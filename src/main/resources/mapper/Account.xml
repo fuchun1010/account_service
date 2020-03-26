@@ -6,7 +6,7 @@
 
     <insert id="addTempSubMoneyRecord" parameterType="com.tank.model.TemporarySubMoneyDTO">
         insert into tab_account_tmp(id, xid, app, tmpMoney)
-        values (#{id}, #{xid}, #{appName}, #{money})
+        values (#{id}, #{xid}, #{app}, #{money})
 
     </insert>
 
@@ -21,6 +21,12 @@
         from tab_account_tmp
         where xid = #{xid}
     </delete>
+
+    <select id="findTemporarySubBy" parameterType="string" resultType="com.tank.model.TemporarySubMoneyDTO">
+        select id, xid, app, tmpMoney
+        from tab_account_tmp
+        where xid = #{xid}
+    </select>
 
 
 </mapper>

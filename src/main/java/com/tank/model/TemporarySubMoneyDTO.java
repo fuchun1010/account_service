@@ -1,13 +1,11 @@
 package com.tank.model;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 @Getter
 @Setter
-@Builder
 @Accessors(chain = true)
 public class TemporarySubMoneyDTO {
 
@@ -17,5 +15,7 @@ public class TemporarySubMoneyDTO {
 
   private Integer money;
 
-  private String appName;
+  private String app;
+
+  private Integer accountId;
 }

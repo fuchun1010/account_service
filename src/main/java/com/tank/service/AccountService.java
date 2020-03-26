@@ -12,12 +12,19 @@ public class AccountService {
 
   @Transactional(rollbackFor = Exception.class)
   public boolean addTempSubMoneyRecord(@NonNull final TemporarySubMoneyDTO temporarySubMoneyDTO) {
-    return accountDAO.addTempSubMoneyRecord(temporarySubMoneyDTO) > 0;
+    int result = accountDAO.addTempSubMoneyRecord(temporarySubMoneyDTO);
+    System.out.println("result = " + result);
+    return result > 0;
   }
 
   @Transactional(rollbackFor = Exception.class)
   public boolean subMoney(@NonNull final String xid) {
-    return accountDAO.deleteTempRecord(xid) > 0 ? accountDAO.subMoney(xid) > 0 : false;
+    TemporarySubMoneyDTO dto = this.accountDAO.findTemporarySubBy(xid);
+    if (dto == null) {
+      throw new NullPointerException("异常");
+    }
+    //return accountDAO.deleteTempRecord(xid) > 0 ? accountDAO.subMoney(dto.getMoney()) > 0 : false;
+    return true;
   }
 
   @Transactional(rollbackFor = Exception.class)
