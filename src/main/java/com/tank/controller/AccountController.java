@@ -66,6 +66,7 @@ public class AccountController {
     } else {
       apiResult.setStatus(500);
     }
+    apiResult.setStatus(200);
     return ResponseEntity.ok(apiResult);
   }
 
