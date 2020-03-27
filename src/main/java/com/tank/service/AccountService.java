@@ -19,11 +19,11 @@ public class AccountService {
 
   @Transactional(rollbackFor = Exception.class)
   public boolean subMoney(@NonNull final String xid) {
-    TemporarySubMoneyDTO dto = this.accountDAO.findTemporarySubBy(xid);
-    if (dto == null) {
-      throw new NullPointerException("实际扣减异常");
+    int totalMoney = this.accountDAO.sumMoney(xid);
+    if (totalMoney == 0) {
+      return true;
     }
-    return accountDAO.deleteTempRecord(xid) > 0 ? accountDAO.subMoney(dto.getMoney()) > 0 : false;
+    return accountDAO.deleteTempRecord(xid) > 0 ? accountDAO.subMoney(totalMoney) > 0 : false;
   }
 
   @Transactional(rollbackFor = Exception.class)

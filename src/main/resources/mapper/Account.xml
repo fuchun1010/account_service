@@ -28,5 +28,12 @@
         where xid = #{xid}
     </select>
 
+    <select id="sumMoney" parameterType="string" resultType="int">
+        select sum(tmpMoney) as money
+        from tab_account_tmp
+        where xid = #{xid}
+        group by xid
+    </select>
+
 
 </mapper>

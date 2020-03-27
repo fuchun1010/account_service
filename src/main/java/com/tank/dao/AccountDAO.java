@@ -14,7 +14,7 @@ public interface AccountDAO {
   int subMoney(@NonNull final int money);
 
   int deleteTempRecord(@NonNull final String xid);
-
-  TemporarySubMoneyDTO findTemporarySubBy(@NonNull String xid);
+  
+  int sumMoney(@NonNull String xid);
 
 }
