@@ -25,15 +25,6 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   config-locations: mybatis-config.xml
 
-#logging:
-#  level:
-#    com:
-#      tank:
-#        crm:
-#          provider:
-#            mapper: debug
-# com.tank.dao
-
 logging:
   level:
     org:

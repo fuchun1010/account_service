@@ -1,7 +1,11 @@
 package com.tank.protocol;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
+
+import java.beans.Transient;
+import java.util.Objects;
 
 /**
  * status : preOk
@@ -18,6 +22,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ConfirmSubMoney {
+
+  @Transient
+  public boolean isEmptyXid() {
+    return Objects.isNull(this.xid);
+  }
 
   private String xid;
 }

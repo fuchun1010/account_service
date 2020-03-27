@@ -3,7 +3,6 @@ package com.tank.dao;
 import com.tank.model.TemporarySubMoneyDTO;
 import lombok.NonNull;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 @Mapper
@@ -16,6 +15,6 @@ public interface AccountDAO {
 
   int deleteTempRecord(@NonNull final String xid);
 
-  TemporarySubMoneyDTO findTemporarySubBy(@Param("xid") @NonNull String xid);
+  TemporarySubMoneyDTO findTemporarySubBy(@NonNull String xid);
 
 }

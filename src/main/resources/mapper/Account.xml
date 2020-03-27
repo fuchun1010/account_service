@@ -5,8 +5,8 @@
 <mapper namespace="com.tank.dao.AccountDAO">
 
     <insert id="addTempSubMoneyRecord" parameterType="com.tank.model.TemporarySubMoneyDTO">
-        insert into tab_account_tmp(id, xid, app, tmpMoney)
-        values (#{id}, #{xid}, #{app}, #{money})
+        insert into tab_account_tmp(id, xid, app, tmpMoney, accountId)
+        values (#{id}, #{xid}, #{app}, #{money}, #{accountId})
 
     </insert>
 
@@ -23,7 +23,7 @@
     </delete>
 
     <select id="findTemporarySubBy" parameterType="string" resultType="com.tank.model.TemporarySubMoneyDTO">
-        select id, xid, app, tmpMoney
+        select id, xid, app, tmpMoney, accountId
         from tab_account_tmp
         where xid = #{xid}
     </select>
