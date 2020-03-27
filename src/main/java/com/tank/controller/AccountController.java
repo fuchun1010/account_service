@@ -61,7 +61,11 @@ public class AccountController {
   @PostMapping("/rollBackSubMoney")
   public ResponseEntity<ApiResult<Integer>> rollBackSubMoney(@RequestBody @NonNull final RollBackMoney rollBackMoney) {
     ApiResult<Integer> apiResult = ApiResult.<Integer>builder().build();
-    apiResult.setStatus(200);
+    if (this.accountService.rollBackSubMoney(rollBackMoney.getXid())) {
+      apiResult.setStatus(200);
+    } else {
+      apiResult.setStatus(500);
+    }
     return ResponseEntity.ok(apiResult);
   }
 

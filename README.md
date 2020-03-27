@@ -11,8 +11,7 @@ curl -XPOST "http://localhost:10999/account_service/v1/preSubMoney" -H "Content-
   "xid": "s0001",
   "money": 100,
   "accountId": 1
-}
-'
+}'
 ```
 
 `body`
@@ -33,6 +32,24 @@ curl -XPOST "http://localhost:10999/account_service/v1/confirmMoney" -H "Content
     "xid": "s0001"
 }'
 ```
+
+`body`
+
+```json
+{
+  "xid": "s0001"
+}
+```
+
+> 撤销账户扣减资金
+
+```text
+curl -XPOST "http://localhost:10999/account_service/v1/rollBackSubMoney" -H "Content-Type:application/json" -d '{
+  "xid": "s0001"
+}'
+```
+
+`body`
 
 ```json
 {

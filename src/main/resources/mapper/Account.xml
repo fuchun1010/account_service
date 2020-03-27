@@ -5,8 +5,8 @@
 <mapper namespace="com.tank.dao.AccountDAO">
 
     <insert id="addTempSubMoneyRecord" parameterType="com.tank.model.TemporarySubMoneyDTO">
-        insert into tab_account_tmp(id, xid, app, tmpMoney, accountId)
-        values (#{id}, #{xid}, #{app}, #{money}, #{accountId})
+        insert into tab_account_tmp(xid, app, tmpMoney, accountId)
+        values (#{xid}, #{app}, #{money}, #{accountId})
 
     </insert>
 
